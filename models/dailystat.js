@@ -17,16 +17,6 @@ module.exports = function(sequelize, DataTypes) {
         studentId: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        testGAD7Id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            default: 0
-        },
-        testPHQ9Id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            default: 0
         }
     });
     return dailystat;

@@ -38,6 +38,10 @@ module.exports = function(sequelize, DataTypes) {
         dateofGAD7: {
             type: DataTypes.DATE,
             allowNull: false
+        },
+        studentId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     });
     return testGAD7;
