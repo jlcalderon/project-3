@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import NavBar from "../NavBar";
 import Footer from "../Footer"
 import Chart from "../Chart"
-/* import LoginForm from "../LoginForm";
-import Footer from "../Footer"; */
+import LoginForm from "../LoginForm";
+
+
 
 //Instance the object
 class HomePage extends Component {
@@ -14,8 +15,9 @@ class HomePage extends Component {
     //Render
     render(){
         return (
-            <div>
+            <div className="container-fluid">
                 <NavBar />
+                 <LoginForm />
                 <Chart />
                 <Footer />
             </div>
