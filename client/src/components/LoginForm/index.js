@@ -1,11 +1,11 @@
 import React from "react";
-/* import styles from "./index.css"; */
+import styles from "./index.css";
 
 function LoginForm(props){
     return (
-        <div className="row">
-            <div className="col-md-12 m-auto">
-                <form style={{backgroundColor: "blue"}}>
+        <div className="row" style={{backgroundColor:"white", marginTop: "20px"}}>
+            <div className="col-sm-12 offset-md-4 col-md-4 offset-md-4 gradient-bg" style={{padding:"25px"}}>
+                <form style={{textAlign: "center"}}>
                      <div className="form-group">
                         <input 
                             type="email" 

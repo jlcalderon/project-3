@@ -23,6 +23,8 @@ class NavBar extends Component {
 
     render() {
         return (
+          <div className="row" style={{backgroundColor: "white"}}>
+            <div className="col">
             <nav className="navbar navbar-expand-lg" style={stylesNav}>
             <h3 style={styles}>MINDSET | Mental Health Matters. </h3>
              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +40,9 @@ class NavBar extends Component {
                  </ul>
                </div>
            </nav>
+            </div>
+          </div>
+            
         );
     }
 }
