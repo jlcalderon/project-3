@@ -81,11 +81,65 @@ const schoolSeeds = [{
     }
 ];
 
+const users = [{
+    userName: "lierin",
+    email: "lierinHanuman@gmail.com",
+    password: "1234",
+    admin: false,
+    status: false,
+    schoolId: 8,
+    scores: 0
+}, {
+    userName: "foos",
+    email: "foosmahamud55@gmail.com",
+    password: "1234",
+    admin: false,
+    status: false,
+    schoolId: 1,
+    scores: 0
+}, {
+    userName: "isabell",
+    email: "imdanell@gmail.com",
+    password: "1234",
+    admin: false,
+    status: false,
+    schoolId: 4,
+    scores: 0
+}, {
+    userName: "anusha",
+    email: "adhamera@gmail.com",
+    password: "1234",
+    admin: false,
+    status: false,
+    schoolId: 5,
+    scores: 0
+}, {
+    userName: "james",
+    email: "jamesjorissen@gmail.com",
+    password: "1234",
+    admin: false,
+    status: false,
+    schoolId: 10,
+    scores: 0
+}, {
+    userName: "jorge",
+    email: "jlcalderonfuentes@gmail.com",
+    password: "1234",
+    admin: false,
+    status: false,
+    schoolId: 9,
+    scores: 0
+}]
+
 //Bulk insert 
 function seedDB() {
     for (let i = 0; i < schoolSeeds.length; i++) {
         insertRecord(schoolSeeds[i]);
-        if (i >= schoolSeeds.length) {
+    }
+
+    for (let i = 0; i < users.length; i++) {
+        insertUserRecords(users[i]);
+        if (i >= users.length) {
             process.exit();
         }
     }
@@ -102,5 +156,16 @@ function insertRecord(schoolObj) {
     });
 }
 
+function insertUserRecords(usersObj) {
+    db.user.create({
+        userName: usersObj.userName,
+        email: usersObj.email,
+        password: usersObj.password,
+        admin: usersObj.admin,
+        status: usersObj.status,
+        schoolId: usersObj.schoolId,
+        scores: usersObj.scores
+    });
+}
 
 seedDB();

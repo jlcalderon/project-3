@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./index.css";
+/* import styles from "./index.css"; */
 
 function LoginForm(props){
     return (
@@ -8,27 +8,35 @@ function LoginForm(props){
                 <form style={{textAlign: "center"}}>
                      <div className="form-group">
                         <input 
-                            type="email" 
+                            type="text"
+                            value={props.username}
+                            onChange={props.handleInputChange}
+                            name="username" 
                             /* className="email rounded-pill p-1 border" */ 
-                            id="email-input" 
+                            id="username" 
                             aria-describedby="emailHelp" 
-                            placeholder="Enter your email" 
+                            placeholder="Enter your user name" 
                         />
                     </div>
                      <div className="form-group">
                        <input 
                             type="password"
+                            value={props.password}
+                            onChange={props.handleInputChange}
+                            name="password"
                             /* className="password rounded-pill p-1 border" */ 
-                            id="password-input" 
+                            id="password" 
                             placeholder="Password, please!"
                         />
                        </div>
                        <div className="txtb">
-                         <input 
-                            type="submit" 
+                         <button 
+                            type="submit"
+                            onClick={props.handleLoginFormSubmit} 
                             className="logbtn" 
-                            value="Login"
-                        />
+                        >
+                            Login
+                        </button>
                       </div>
                       <div className="bottom-text" style={{color:"white"}}>
                         Don't have an account? <a href="register.html">Register</a>
