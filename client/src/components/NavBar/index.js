@@ -1,50 +1,64 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
-    //CSS Styling for this component
-    const styles = {
-        color: "white",
-        fontSize: "20px",
-    }
+//CSS Styling for this component
+const styles = {
+    color: "white",
+    fontSize: "20px",
+};
 
-    const stylesNav = {
-        backgroundColor:"#0a928e"
-    }
+const stylesNav = {
+    backgroundColor: "#0a928e",
+};
 
-    const navLink = {
-        color: "white",
-        fontSize:" 20px"
-        }
-        
+const navLink = {
+    color: "white",
+    fontSize: " 20px",
+};
 
-class NavBar extends Component {
+function NavBar() {
     //Define State
-
+    const location = useLocation();
     //Handle functions
-
-    render() {
-        return (
-          <div className="row" style={{backgroundColor: "white"}}>
-            <div className="col">
-            <nav className="navbar navbar-expand-lg" style={stylesNav}>
-            <h3 style={styles}>MINDSET | Mental Health Matters. </h3>
-             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-               <span className="navbar-toggler-icon"></span>
-             </button>
-               <div className="collapse navbar-collapse" id="navbarResponsive">
-                 <ul className="navbar-nav ml-auto">
-                   <li className="nav-item active">
-                     <a class="nav-link" href="homepage.html" style={navLink}>Home
-                           <span class="sr-only">(current)</span>
-                         </a>
-                   </li>
-                 </ul>
-               </div>
-           </nav>
+    return (
+        <div className="full-width">
+            <div className='row' style={{ backgroundColor: "white" }}>
+                <div className='col'>
+                    <nav className='navbar navbar-expand-lg' style={stylesNav}>
+                        <h3 style={styles}>
+                            MINDSET |
+                        </h3>
+                            <ul className='navbar-nav ml-auto'>
+                                <li className='nav-item'>
+                                    <Link
+                                        to='/'
+                                        className={
+                                            location.pathname === "/"
+                                                ? "nav-link active"
+                                                : "nav-link"
+                                        }
+                                        style={navLink}>
+                                        Home
+                                    </Link>
+                                </li>
+                                <li className='nav-item'>
+                                    <Link
+                                        to='/dashboard'
+                                        className={
+                                            location.pathname === "/dashboard"
+                                                ? "nav-link active"
+                                                : "nav-link"
+                                        }
+                                        style={navLink}>
+                                        Dashboard
+                                    </Link>
+                                </li>
+                            </ul>
+                    </nav>
+                </div>
             </div>
-          </div>
-            
-        );
-    }
+        </div>
+    );
 }
 
 export default NavBar;

@@ -2,15 +2,16 @@ import React from "react";
 /* import styles from "./index.css"; */
 
 function LoginForm(props){
+    console.log(props);
     return (
         <div className="row" style={{backgroundColor:"white", marginTop: "20px"}}>
             <div className="col-sm-12 offset-md-4 col-md-4 offset-md-4 gradient-bg" style={{padding:"25px"}}>
-                <form style={{textAlign: "center"}}>
+                <form onSubmit={props.handleLoginFormSubmit} style={{textAlign: "center"}}>
                      <div className="form-group">
                         <input 
                             type="text"
                             value={props.username}
-                            onChange={props.handleInputChange}
+                            onChange={props.handleInputChangeUsername}
                             name="username" 
                             /* className="email rounded-pill p-1 border" */ 
                             id="username" 
@@ -22,7 +23,7 @@ function LoginForm(props){
                        <input 
                             type="password"
                             value={props.password}
-                            onChange={props.handleInputChange}
+                            onChange={props.handleInputChangePassword}
                             name="password"
                             /* className="password rounded-pill p-1 border" */ 
                             id="password" 
@@ -32,8 +33,7 @@ function LoginForm(props){
                        <div className="txtb">
                          <button 
                             type="submit"
-                            onClick={props.handleLoginFormSubmit} 
-                            className="logbtn" 
+                            className="logbtn"
                         >
                             Login
                         </button>

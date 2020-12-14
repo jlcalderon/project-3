@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import styles from "./index.css";
+import React from "react";
 
 const footerStyle = {
     fontSize: "20px",
@@ -13,12 +12,7 @@ const ptag = {
     color: "white",
 };
 
-class Footer extends Component {
-    //Define State
-
-    //Handle functions
-
-    render() {
+function Footer(){    
         return (
             <div className='row' style={{marginTop: "25px", backgroundColor:"white"}}>
                 <div className='col-md-12 col-sm-12 gradient-bg'>
@@ -30,7 +24,6 @@ class Footer extends Component {
                 </div>
             </div>
         );
-    }
 }
 
 export default Footer;
