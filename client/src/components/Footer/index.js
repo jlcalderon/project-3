@@ -9,9 +9,9 @@ const footerStyle = {
 
 const ptag = {
     textAlign: "center",
-    color: "white",
+    color: "black",
 };
-
+ 
 function Footer(){    
         return (
             <div className='row' style={{marginTop: "25px", backgroundColor:"white"}}>

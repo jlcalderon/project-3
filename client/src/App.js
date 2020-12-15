@@ -9,8 +9,8 @@ function App() {
         <Router>
             <div style={{backgroundColor:"white"}}>
                 <NavBar />
-                <Route path="/" component={HomePage} />
-                <Route path="/dashboard" component={Dashboard} />
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/dashboard" component={Dashboard} />
             </div>
         </Router>
     );

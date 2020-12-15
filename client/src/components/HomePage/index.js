@@ -22,11 +22,12 @@ function HomePage() {
                 password: password,
             })
             .then((result) => {
-            /* alert(`User: ${JSON.stringify(result.data)} authenticated`); */
             //CHANGE STATE    
             //CHANGE URL
-            //REACT ROUTER HISTORY  
+            //REACT ROUTER HISTORY
+            //passing ID user to dashboard storing user id in a high context level  
             history.push("/dashboard");
+            //Protect routes ?
         }).catch((err) => {
                 throw err;
             });
