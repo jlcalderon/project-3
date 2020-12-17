@@ -27,7 +27,7 @@ function HomePage() {
             //CHANGE URL
             //REACT ROUTER HISTORY
             //passing ID user to dashboard storing user id in a high context level  
-            history.push("/dailymoodsuervey");
+            history.push("/dailymoodsurvey");
             //Protect routes ?
         }).catch((err) => {
                 throw err;
