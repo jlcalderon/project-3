@@ -14,7 +14,7 @@ function App() {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/tests" component={Tests} />
                 <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/dailymoodsuervey" component={DailyMoodSurvey} />
+                <Route exact path="/dailymoodsurvey" component={DailyMoodSurvey} />
             </div>
         </Router>
     );
