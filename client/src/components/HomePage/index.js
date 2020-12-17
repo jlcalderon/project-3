@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Footer from "../Footer";
 import LoginForm from "../LoginForm";
 import axios from "axios";
+import "./index.css";
 
 function HomePage() {
     //Define state 
@@ -26,7 +27,7 @@ function HomePage() {
             //CHANGE URL
             //REACT ROUTER HISTORY
             //passing ID user to dashboard storing user id in a high context level  
-            history.push("/dashboard");
+            history.push("/dailymoodsuervey");
             //Protect routes ?
         }).catch((err) => {
                 throw err;
@@ -36,7 +37,7 @@ function HomePage() {
     //Render
         return (
             <div
-                className='container-fluid'
+                className='container'
                 style={{ backgroundColor: "white" }}>
                 <LoginForm
                     username={username}
@@ -45,7 +46,9 @@ function HomePage() {
                     handleInputChangeUsername={(event)=>{setUsername(event.target.value)}}
                     handleInputChangePassword={(event)=>{setPassword(event.target.value)}}
                  />
-                <Footer />
+                 <div style={{marginTop:"20px"}}>
+                 <Footer />
+                 </div>
             </div>
         );
 }

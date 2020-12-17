@@ -7,17 +7,20 @@ function Dashboard(props) {
   return (
     <div className="container">
         <div className="row">
-          <div className="offset-md-1 col-md-4">
-          <h2>Hello {}</h2>
+          <div className="col">
+          <h3>Hello {}</h3>
           </div>
         </div>  
         <div className="row">
-          <div className="offset-md-2 col-md-4">
-          <h5>Here are your daily mood tracker statistics</h5>
+          <div className="col">
+          <p>Here are your daily mood tracker statistics</p>
+          {/** Here we got to send the data and setings as props*/}
           <Chart />
           </div>
         </div>  
+        <div style={{marginTop:"20px"}}>
         <Footer />
+        </div>  
   </div>
   );
 }

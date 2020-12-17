@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
-import Dashboard from './components/Dashboard';
-// import Signup from "./components/SignUpForm";
 import Tests from "./components/Tests";
+import DailyMoodSurvey from './components/DailyMoodSurvey';
+import Dashboard from './components/Dashboard';
 
 function App() {
     return (
@@ -14,6 +14,7 @@ function App() {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/tests" component={Tests} />
                 <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/dailymoodsuervey" component={DailyMoodSurvey} />
             </div>
         </Router>
     );

@@ -1,12 +1,12 @@
 import React from "react";
-/* import styles from "./index.css"; */
+import  "./index.css";
 
 function LoginForm(props){
     console.log(props);
     return (
-        <div className="row" style={{backgroundColor:"white", marginTop: "20px"}}>
+        <div className="row" style={{backgroundColor:"white", marginTop: "20px", textAlign:"center"}}>
             <div className="col-sm-12 offset-md-4 col-md-4 offset-md-4 gradient-bg" style={{padding:"25px"}}>
-            <img src="./mindsetlogo.png" alt="Minset logo" height="130"/>
+                <img src="mindsetlogo.png" width="150px" alt="Mindset logo"/>
                 <form onSubmit={props.handleLoginFormSubmit} style={{textAlign: "center"}}>
                      <div className="form-group">
                         <input 
@@ -40,7 +40,7 @@ function LoginForm(props){
                         </button>
                       </div>
                       <div className="bottom-text" style={{color:"white"}}>
-                        Don't have an account? <a href="register.html">Register</a>
+                        Don't have an account? <a href="register.html" style={{color:"white"}}>Register</a>
                       </div>
                 </form>
         </div>

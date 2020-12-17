@@ -1,7 +1,18 @@
 import React from "react";
 import { Chart } from "react-google-charts";
+import axios from "axios";
 
 function googleChart() {
+
+  //Faking data to test
+  let res = axios.get("/api/dailystat/student/"+1)
+    .then((result)=>{
+      return result;
+    });
+  
+
+  console.log(res);
+
     return (
       <Chart
         width={'600px'}
@@ -14,17 +25,13 @@ function googleChart() {
           [1, 10, 5],
           [2, 23, 15],
           [3, 17, 9],
-          [4, 18, 10],
-          [5, 9, 5],
-          [6, 11, 3],
-          [7, 27, 19],
         ]}
         options={{
           hAxis: {
-            title: 'Time',
+            title: 'Days',
           },
           vAxis: {
-            title: 'Popularity',
+            title: 'Mood',
           },
           series: {
             1: { curveType: 'function' },

@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 
 const footerStyle = {
     fontSize: "20px",
@@ -9,19 +10,21 @@ const footerStyle = {
 
 const ptag = {
     textAlign: "center",
-    color: "black",
+    color: "white",
 };
  
 function Footer(){    
         return (
-            <div className='row' style={{marginTop: "25px", backgroundColor:"white"}}>
-                <div className='col-md-12 col-sm-12 gradient-bg'>
-                    <h1 style={footerStyle}>Made with ❤️️ in Minnesota</h1>
-                    <p style={ptag}>
-                        By Lierin Hanuman, Foos Mahamud, James Jorissen, Isabell Danell, Anusha
-                        Dhamera and Jorge Calderon
-                    </p>
-                </div>
+            <div className='gradient-bg'>
+                <div className="row">
+                    <div className="col">
+                        <h1 style={footerStyle}>Made with ❤️️ in Minnesota</h1>
+                        <p style={ptag}>
+                            By Lierin Hanuman, Foos Mahamud, James Jorissen, Isabell Danell, Anusha
+                            Dhamera and Jorge Calderon
+                        </p>
+                    </div>
+                </div>    
             </div>
         );
 }
