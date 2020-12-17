@@ -82,54 +82,64 @@ const schoolSeeds = [{
 ];
 
 const users = [{
-    userName: "lierin",
-    email: "lierinHanuman@gmail.com",
-    password: "1234",
-    admin: false,
-    status: false,
-    schoolId: 8,
-    scores: 0
-}, {
-    userName: "foos",
-    email: "foosmahamud55@gmail.com",
-    password: "1234",
-    admin: false,
-    status: false,
-    schoolId: 1,
-    scores: 0
-}, {
-    userName: "isabell",
-    email: "imdanell@gmail.com",
-    password: "1234",
-    admin: false,
-    status: false,
-    schoolId: 4,
-    scores: 0
-}, {
-    userName: "anusha",
-    email: "adhamera@gmail.com",
-    password: "1234",
-    admin: false,
-    status: false,
-    schoolId: 5,
-    scores: 0
-}, {
-    userName: "james",
-    email: "jamesjorissen@gmail.com",
-    password: "1234",
-    admin: false,
-    status: false,
-    schoolId: 10,
-    scores: 0
-}, {
-    userName: "jorge",
-    email: "jlcalderonfuentes@gmail.com",
-    password: "1234",
-    admin: false,
-    status: false,
-    schoolId: 9,
-    scores: 0
-}]
+        userName: "lierin",
+        email: "lierinHanuman@gmail.com",
+        password: "1234",
+        admin: false,
+        status: false,
+        schoolId: 8,
+        scores: 0
+    }, {
+        userName: "foos",
+        email: "foosmahamud55@gmail.com",
+        password: "1234",
+        admin: false,
+        status: false,
+        schoolId: 1,
+        scores: 0
+    }, {
+        userName: "isabell",
+        email: "imdanell@gmail.com",
+        password: "1234",
+        admin: false,
+        status: false,
+        schoolId: 4,
+        scores: 0
+    }, {
+        userName: "anusha",
+        email: "adhamera@gmail.com",
+        password: "1234",
+        admin: false,
+        status: false,
+        schoolId: 5,
+        scores: 0
+    }, {
+        userName: "james",
+        email: "jamesjorissen@gmail.com",
+        password: "1234",
+        admin: false,
+        status: false,
+        schoolId: 10,
+        scores: 0
+    }, {
+        userName: "jorge",
+        email: "jlcalderonfuentes@gmail.com",
+        password: "1234",
+        admin: false,
+        status: false,
+        schoolId: 9,
+        scores: 0
+    },
+    {
+        userName: "nate",
+        email: "nate@gmail.com",
+        password: "1234",
+        admin: true,
+        status: false,
+        schoolId: 11,
+        scores: 0
+    }
+]
 
 //Bulk insert 
 function seedDB() {

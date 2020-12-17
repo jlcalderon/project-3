@@ -188,7 +188,7 @@ module.exports = function(app) {
                 trouble: req.body.trouble,
                 restless: req.body.restless,
                 annoyed: req.body.annoyed,
-                affraid: req.body.affraid,
+                afraid: req.body.afraid,
                 dateofGAD7: Date.now(),
                 studentId: req.body.studentId,
             })

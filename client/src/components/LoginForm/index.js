@@ -6,6 +6,7 @@ function LoginForm(props){
     return (
         <div className="row" style={{backgroundColor:"white", marginTop: "20px"}}>
             <div className="col-sm-12 offset-md-4 col-md-4 offset-md-4 gradient-bg" style={{padding:"25px"}}>
+            <img src="./mindsetlogo.png" alt="Minset logo" height="130"/>
                 <form onSubmit={props.handleLoginFormSubmit} style={{textAlign: "center"}}>
                      <div className="form-group">
                         <input 
