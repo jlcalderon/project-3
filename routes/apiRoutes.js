@@ -119,7 +119,7 @@ module.exports = function(app) {
     });
 
     //READ, Get all stats of a specific student id
-    app.get("/api/dailystat/:id", (req, res) => {
+    app.get("/api/dailystat/student/:id", (req, res) => {
         db.dailystat.findAll({
                 where: {
                     studentId: req.params.id

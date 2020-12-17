@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import axios from "axios";
 
-function googleChart() {
-
-  //Faking data to test
-  let res = axios.get("/api/dailystat/student/"+1)
-    .then((result)=>{
-      return result;
-    });
+function GoogleChart() {
   
+  //Faking data to test  
+  const [data, setData] = useState([]);
 
-  console.log(res);
+  useEffect(()=>{
+    axios.get("/api/dailystat/student/"+1)
+    .then((result)=>{
+       const formattedData = result.data.map((item) => {
+         return [ new Date(item.dateofSurvey) , item.mood ];
+       });
+       setData([["Date", "Mood"], ...formattedData]);
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+  },[]);
+ 
+  console.log(data);
 
     return (
       <Chart
@@ -19,13 +28,7 @@ function googleChart() {
         height={'400px'}
         chartType="LineChart"
         loader={<div>Loading Chart</div>}
-        data={[
-          ['x', 'dogs', 'cats'],
-          [0, 0, 0],
-          [1, 10, 5],
-          [2, 23, 15],
-          [3, 17, 9],
-        ]}
+        data={data}
         options={{
           hAxis: {
             title: 'Days',
@@ -42,4 +45,4 @@ function googleChart() {
     );
 }
 
-export default googleChart;
+export default GoogleChart;
