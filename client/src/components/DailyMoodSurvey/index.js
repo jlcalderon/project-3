@@ -31,7 +31,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(1);
                                     }
                             }
-                            src='https://picsum.photos/300/300'
+                            src='../../../hopeless.png'
                             alt='Hopeless mood'
                             width={50}
                             className='card-img-top'
@@ -52,7 +52,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(1);
                                     }
                             }
-                            src='https://picsum.photos/300/300'
+                            src='../../../sad.png'
                             alt='Sad mood'
                             width={50}
                             className='card-img-top'
@@ -73,7 +73,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(1);
                                     }
                             }
-                            src='https://picsum.photos/300/300'
+                            src='../../../neutral.png'
                             alt='Neutral mood'
                             width={50}
                             className='card-img-top'
@@ -94,7 +94,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(2);
                                     }
                             }
-                            src='https://picsum.photos/300/300'
+                            src='../../../happy.png'
                             alt='Happy mood'
                             width={50}
                             className='card-img-top'
@@ -115,8 +115,9 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(2);
                                     }
                             }
-                            src='https://picsum.photos/300/300'
-                            alt='Hopeless mood'
+                            src='../../../fantastic.png'
+                            // src='https://picsum.photos/300/300'
+                            alt='Fantastic mood'
                             width={50}
                             className='card-img-top'
                             style={{borderRadius:"90%"}}
