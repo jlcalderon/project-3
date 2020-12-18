@@ -3,8 +3,7 @@ import { Chart } from "react-google-charts";
 import axios from "axios";
 
 function GoogleChart() {
-  
-  //Faking data to test  
+    
   const [data, setData] = useState([]);
 
   useEffect(()=>{
@@ -31,10 +30,10 @@ function GoogleChart() {
         data={data}
         options={{
           hAxis: {
-            title: 'Days',
+            title: 'Date and Time axis',
           },
           vAxis: {
-            title: 'Mood',
+            title: 'Mood scales 1 = Hopeless - 5 = Fantastic',
           },
           series: {
             1: { curveType: 'function' },

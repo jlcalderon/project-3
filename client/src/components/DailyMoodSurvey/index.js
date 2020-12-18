@@ -31,7 +31,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(1);
                                     }
                             }
-                            src='../../../hopeless.png'
+                            src='../../../assets/hopeless.png'
                             alt='Hopeless mood'
                             width={50}
                             className='card-img-top'
@@ -52,7 +52,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(1);
                                     }
                             }
-                            src='../../../sad.png'
+                            src='../../../assets/sad.png'
                             alt='Sad mood'
                             width={50}
                             className='card-img-top'
@@ -73,7 +73,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(1);
                                     }
                             }
-                            src='../../../neutral.png'
+                            src='../../../assets/neutral.png'
                             alt='Neutral mood'
                             width={50}
                             className='card-img-top'
@@ -94,7 +94,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(2);
                                     }
                             }
-                            src='../../../happy.png'
+                            src='../../../assets/happy.png'
                             alt='Happy mood'
                             width={50}
                             className='card-img-top'
@@ -115,7 +115,7 @@ function DailyMoodSurvey(props){
                                     setNeedhelp(2);
                                     }
                             }
-                            src='../../../fantastic.png'
+                            src='../../../assets/fantastic.png'
                             // src='https://picsum.photos/300/300'
                             alt='Fantastic mood'
                             width={50}
@@ -138,8 +138,8 @@ function DailyMoodSurvey(props){
                 <div className="row" style={{marginTop:"10px"}}>
                     <div className="col">
                         <p>We feel sorry that you are not feeling well today. Would you like to talk about your feelings with a counselor?</p>
-                        <button type="button" className="btn btn-light" style={{marginLeft: "10px"}}>Yes</button>
-                        <button type="button" className="btn btn-light" style={{marginLeft: "10px"}}>No</button>
+                        <button type="button" className="btn btn-light" style={{marginLeft: "10px" , backgroundColor: "#1AB394", color:"white"}}>Yes</button>
+                        <button type="button" className="btn btn-light" style={{marginLeft: "10px", backgroundColor: "#1AB394", color:"white"}}>No</button>
                     </div>
                 </div>
             ) : null }
@@ -155,6 +155,7 @@ function DailyMoodSurvey(props){
             <button
                 className="btn btn-light"
                 type="button"
+                style={{backgroundColor: "#1AB394", color:"white"}}
                 onClick={(event)=>{
                     axios
                         .post("/api/dailystat", {
