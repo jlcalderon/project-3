@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
         note: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        status: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
     return therapySession;

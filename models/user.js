@@ -22,8 +22,8 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        //Control what users can do in the app I users are admin they have all granted access to create shopping lists and update Inventory.
-        //if they are not admin they can only Complete Shopping lists.
+        //Control what users can do in the app, users that are admin === true access to counselor data.
+        //if they are not admin or admin === false they access to student data.
         admin: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
