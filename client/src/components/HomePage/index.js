@@ -23,8 +23,12 @@ function HomePage() {
             .then((result) => {
             //passing user logged in to dashboard by storing user object in a high context level (LocalStorage)
             localStorage.setItem("user",JSON.stringify(result.data));
-            console.log(result.data);  
-            history.push("/dailymoodsurvey");
+            if(!result.data.admin){
+                history.push("/dailymoodsurvey");
+            }
+            if(result.data.admin){
+                history.push("/dashboard");
+            }  
         }).catch((err) => {
                 throw err;
             });

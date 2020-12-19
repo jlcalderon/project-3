@@ -460,6 +460,21 @@ module.exports = function(app) {
             });
     });
 
+    // READ all users from a specific school with students privilege
+    app.get("/api/user/student/school/:id", (req, res) => {
+        db.user.findAll({
+                where: {
+                    schoolId: req.params.id,
+                    admin: false
+                }
+            }).then((dbUsersBySchoolId) => {
+                res.json(dbUsersBySchoolId);
+            })
+            .catch((err) => {
+                res.status(500).json(err);
+            });
+    });
+
     // UPDATE user info by id
     app.post("/api/user/update/:id", (req, res) => {
         db.user.update({

@@ -2,10 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 //CSS Styling for this component
-const styles = {
-    color: "white",
-    fontSize: "20px",
-};
 
 const stylesNav = {
     backgroundColor: "#0a928e",

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Footer from "../Footer";
 import axios from "axios";
 import * as Survey from "survey-react"
 import "survey-react/survey.css";
