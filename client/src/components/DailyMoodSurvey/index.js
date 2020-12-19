@@ -1,21 +1,28 @@
-import React, { useState }from "react";
+import React, { useState, useEffect }from "react";
 import { useHistory } from "react-router-dom";
 import Footer from "../Footer";
 /* import styles from "./index.css"; */
 import axios from "axios";
 
 
-function DailyMoodSurvey(props){
+function DailyMoodSurvey(){
 
+    const [user, setUser] = useState({});
     const [mood, setMood] = useState(0);
     const [needhelp, setNeedhelp] = useState(0);
     let history = useHistory();
+
+    useEffect(()=>{
+        setUser(JSON.parse(localStorage.getItem("user")));
+    },[]);
+
+    console.log(user);
 
     return (
         <div className="container" style={{marginTop:"20px"}}>
             <div className="row h-100">
                 <div className="col">
-                    <h4>How are you doing today?</h4>
+                    <h4>Hi {user.userName}! how are you doing today?</h4>
                     <p>Please choose one of the options that match your feelings today, start looking at the options from the left to right</p>
                 </div>
             </div>
@@ -161,7 +168,7 @@ function DailyMoodSurvey(props){
                         .post("/api/dailystat", {
                             dateofSurvey: Date.now(),
                             mood: mood,
-                            studentId: 1
+                            studentId: user.id
                         })
                         .then((result)=>{
                             //Display UI message to say something
@@ -175,8 +182,7 @@ function DailyMoodSurvey(props){
             >Submit
             </button>
             </div>
-            <div style={{marginTop:"20px"}}>
-            <Footer />        
+            <div style={{marginTop:"20px"}}>      
             </div>
         </div>
     );

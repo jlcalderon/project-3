@@ -3,11 +3,12 @@ import { Chart } from "react-google-charts";
 import axios from "axios";
 
 function GoogleChart() {
-    
+  
   const [data, setData] = useState([]);
-
+  
+  //Component did mount
   useEffect(()=>{
-    axios.get("/api/dailystat/student/"+1)
+    axios.get("/api/dailystat/student/"+parseInt(JSON.parse(localStorage.getItem("user")).id,10))
     .then((result)=>{
        const formattedData = result.data.map((item) => {
          return [ new Date(item.dateofSurvey) , item.mood ];

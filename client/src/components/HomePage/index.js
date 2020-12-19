@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Footer from "../Footer";
 import LoginForm from "../LoginForm";
 import axios from "axios";
 import "./index.css";
@@ -15,7 +14,6 @@ function HomePage() {
     //Submit the form to axios API post request
      const handleLoginFormSubmit = (event) => {
         event.preventDefault();
-        console.log(username +" "+ password);
 
         axios
             .post("/api/login", {
@@ -23,12 +21,10 @@ function HomePage() {
                 password: password,
             })
             .then((result) => {
-            //CHANGE STATE    
-            //CHANGE URL
-            //REACT ROUTER HISTORY
-            //passing ID user to dashboard storing user id in a high context level  
+            //passing user logged in to dashboard by storing user object in a high context level (LocalStorage)
+            localStorage.setItem("user",JSON.stringify(result.data));
+            console.log(result.data);  
             history.push("/dailymoodsurvey");
-            //Protect routes ?
         }).catch((err) => {
                 throw err;
             });
@@ -47,7 +43,6 @@ function HomePage() {
                     handleInputChangePassword={(event)=>{setPassword(event.target.value)}}
                  />
                  <div style={{marginTop:"20px"}}>
-                 <Footer />
                  </div>
             </div>
         );

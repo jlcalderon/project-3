@@ -2,7 +2,6 @@ import React from "react";
 import  "./index.css";
 
 function LoginForm(props){
-    console.log(props);
     return (
         <div className="row" style={{backgroundColor:"white", marginTop: "20px", textAlign:"center"}}>
             <div className="col-sm-12 offset-md-4 col-md-4 offset-md-4 gradient-bg" style={{padding:"25px"}}>

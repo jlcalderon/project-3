@@ -25,8 +25,13 @@ function NavBar() {
             <div className='row' style={{ backgroundColor: "white" }}>
                 <div className='col'>
                     <nav className='navbar navbar-expand-lg' style={stylesNav}>
-                        <h3 style={styles}> MINDSET </h3>
-                            <ul className='navbar-nav ml-auto'>
+                    <Link
+                        to='/' 
+                        className="navbar-brand"
+                        style={navLink}>
+                        MindSet
+                    </Link>
+                        <ul className='navbar-nav ml-auto'>
                                 <li className='nav-item'>
                                     <Link
                                         to='/'

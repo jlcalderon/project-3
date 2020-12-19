@@ -171,7 +171,6 @@ function Tests() {
             />
             </div>
         </div>
-        <Footer/>
     </div>    
     );
 }

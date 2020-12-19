@@ -15,16 +15,14 @@ const ptag = {
  
 function Footer(){    
         return (
-            <div className='gradient-bg'>
-                <div className="row">
-                    <div className="col">
+            <div className='gradient-bg' style={{minHeight: "15vh"}}>
+                <footer className="footer">
                         <h1 style={footerStyle}>Made with ❤️️ in Minnesota</h1>
                         <p style={ptag}>
                             By Lierin Hanuman, Foos Mahamud, James Jorissen, Isabell Danell, Anusha
                             Dhamera and Jorge Calderon
                         </p>
-                    </div>
-                </div>    
+                </footer>
             </div>
         );
 }
