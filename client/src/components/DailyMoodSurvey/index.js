@@ -6,13 +6,18 @@ import axios from "axios";
 
 function DailyMoodSurvey(){
 
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
     const [mood, setMood] = useState(0);
     const [needhelp, setNeedhelp] = useState(0);
     let history = useHistory();
 
     useEffect(()=>{
-        setUser(JSON.parse(localStorage.getItem("user")));
+/*         axios.get("/api/user/"+parseInt(JSON.parse(localStorage.getItem("user")).id,10))
+        .then((res)=>{
+            setUser(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        }); */
     },[]);
 
     console.log(user);
@@ -163,16 +168,31 @@ function DailyMoodSurvey(){
                 type="button"
                 style={{backgroundColor: "#1AB394", color:"white"}}
                 onClick={(event)=>{
-                    axios
-                        .post("/api/dailystat", {
+                    //Create new daily stat
+                    axios.post("/api/dailystat", {
                             dateofSurvey: Date.now(),
                             mood: mood,
                             studentId: user.id
                         })
                         .then((result)=>{
-                            //Display UI message to say something
-                            //Redirect to dashboard
-                            history.push("/dashboard")
+                            //Update scores of user
+                            let newScore = user.scores+5;
+                            console.log(newScore);
+                             axios.post("/api/user/update/student/"+user.id+"/score/"+newScore)//sneding values to update by params
+                            .then((res)=>{
+                                 console.log(res);   
+                                 //Update the user highlevel reference object from localstorage to the updated user
+                                axios.get("/api/user/"+user.id)
+                                .then((userResult)=>{
+                                    localStorage.setItem("user",JSON.stringify(userResult.data));
+                                    //Redirect to dashboard
+                                    history.push("/dashboard");
+                                }).catch((err)=>{
+                                    console.log(err);
+                                });                                 
+                            }).catch((err)=>{
+                                console.log(err);
+                            });
                         }).catch((err) => {
                             throw err;
                         });

@@ -13,6 +13,7 @@ function App() {
         <Router>
             <div style={{backgroundColor:"white"}}>
                 <NavBar />
+                {/* // !login ? (route) */}
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/tests" component={Tests} />
                 <Route exact path="/dashboard" component={Dashboard} />

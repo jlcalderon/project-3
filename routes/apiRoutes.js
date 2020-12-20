@@ -494,6 +494,23 @@ module.exports = function(app) {
         });
     });
 
+    /* Get student scores ? */
+
+    /* UPDATE Scores of students */
+    app.post("/api/user/update/student/:studentId/score/:score", (req, res) => {
+        db.user.update({
+            scores: req.params.score
+        }, {
+            where: {
+                id: req.params.studentId
+            }
+        }).then((dbUserStudentScoreUpdated) => {
+            res.json(dbUserStudentScoreUpdated);
+        }).catch((err) => {
+            res.status(500).json(err);
+        });
+    });
+
     // DELETE a user by id
     app.delete("/api/user/:id", (req, res) => {
         db.user.destroy({
