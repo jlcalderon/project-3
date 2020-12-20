@@ -12,11 +12,11 @@ function LoginForm(props){
                             type="text"
                             value={props.username}
                             onChange={props.handleInputChangeUsername}
-                            name="userEmail" 
+                            name="username" 
                             /* className="email rounded-pill p-1 border" */ 
-                            id="userEmail" 
+                            id="username" 
                             aria-describedby="emailHelp" 
-                            placeholder="Enter your email" 
+                            placeholder="Enter your username here" 
                         />
                     </div>
                      <div className="form-group">
