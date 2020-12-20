@@ -3,12 +3,20 @@ import { useHistory } from "react-router-dom";
 import LoginForm from "../LoginForm";
 import axios from "axios";
 import "./index.css";
+import Background from './background.jpg';
+
+
 
 function HomePage() {
     //Define state 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     let history = useHistory();
+    let backgroundStyle = {
+        backgroundImage: `url(${Background})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "auto"
+    };
 
     //HandleFunctions
     //Submit the form to axios API post request
@@ -38,7 +46,7 @@ function HomePage() {
         return (
             <div
                 className='container'
-                style={{ backgroundColor: "white" }}>
+                style={backgroundStyle, {minHeight: "75vh"}}>
                 <LoginForm
                     username={username}
                     password={password}

@@ -3,7 +3,7 @@ import  "./index.css";
 
 function LoginForm(props){
     return (
-        <div className="row" style={{backgroundColor:"white", marginTop: "20px", textAlign:"center"}}>
+        <div className="row" style={{marginTop: "20px", textAlign:"center", paddingTop: "10%"}}>
             <div className="col-sm-12 offset-md-4 col-md-4 offset-md-4 gradient-bg" style={{padding:"25px"}}>
                 <img src="mindsetlogo.png" width="150px" alt="Mindset logo"/>
                 <form onSubmit={props.handleLoginFormSubmit} style={{textAlign: "center"}}>

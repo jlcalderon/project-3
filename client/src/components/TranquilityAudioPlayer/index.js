@@ -10,8 +10,9 @@ function TranquilityAudioPlayer() {
                 <div className='col-md-4 offset-md-4 my-auto'>
                     <div className='card'>
                         <img
+                            //src='../../../assets/relax.png/300/300'
                             src='https://picsum.photos/300/300'
-                            alt='Mindset'
+                            alt='Relax With Mindset'
                             width={70}
                             className='card-img-top'
                             style={{borderRadius:"90%"}}
