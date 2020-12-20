@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from "react";
 import GoogleChart from "../GoogleChart";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import moment from 'moment'
 
 function Dashboard() {
     const [user, setUser] = useState({});
     const [studentsData, setStudentsData] = useState([]);
+    const [meetingsData, setMeetingsData] = useState([]);
 
     useEffect(() => {
+        //Grabbing the user object from a high level
         const userFormatted = JSON.parse(localStorage.getItem("user"));
         setUser(userFormatted);
 
+        //This request is to retrieve the students of the counselor school
         axios.get("/api/user/student/school/"+parseInt(JSON.parse(localStorage.getItem("user")).schoolId,10))
         .then((results)=>{
           setStudentsData(results.data);
         }).catch(err => {
           console.log(err);
         });
+
+        //This axios request is retrieving meetings requested to counselor ids */
+        axios.get("/api/therapysession/couselor/"+parseInt(JSON.parse(localStorage.getItem("user")).id,10),{
+            dateofSession: Date.now()
+        })
+        .then((results)=>{
+           setMeetingsData(results.data); 
+        }).catch((err)=>{
+            console.log(err);
+        })
 
     }, []);
 
@@ -34,6 +49,7 @@ function Dashboard() {
                     </div>
                     <div className='row'>
                       <div className='col'>
+                          <p>See your students: </p>
                         <ul className="list-group">
                         {studentsData.map((item)=>{
                           return (<li 
@@ -42,10 +58,29 @@ function Dashboard() {
                                     onClick={(event)=>{console.log(event.target.id)}}
                                     style={{display:"inline-block"}}
                                     >
-                                    <p>Name: {item.userName} | Status: {item.status === false ? (<p>Offline</p>) : (<p>Online</p>)} | Scores: {item.scores}</p> 
+                                    <p>ID: {item.id} Name: {item.userName} | Scores: {item.scores}</p> 
                                     <button>Do Something</button>
                                   </li>);
                         })
+                        }
+                        </ul>
+                      </div>
+                      <div className="col">
+                        <p>Meetings requested today {moment(Date.now()).format("MM/DD/YYYY")}</p>
+                        <ul className="list-group-item">
+                        {
+                            meetingsData.map((item)=>{
+                                
+                                return (
+                                    <li
+                                        className="list-group-item"
+                                        id={item.id}
+                                    >
+                                     Subject: {item.subject}  Reqeusted by student ID: {item.studentId}  <button>Send Link</button>  
+                                    </li>
+                                )
+                                
+                            })
                         }
                         </ul>
                       </div>
@@ -60,9 +95,46 @@ function Dashboard() {
                     </div>
                     <div className='row'>
                         <div className='col'>
-                            <p>Here are your daily mood tracker statistics</p>
+                            <p>Here are your daily mood statistics</p>
                             {/** Here we got to send the data and setings as props*/}
                             <GoogleChart />
+                        </div>
+                        <div className="col">
+                            <div className="row">
+                                <div className="col">
+                                    <h3>Scores: {user.scores}</h3>
+                                </div>
+                            </div>
+                            <div className="row">
+                            <div className="col">
+                            <ul className="list-group">
+                                <li className="list-group-item">
+                                    <Link 
+                                        to='/tests'
+                                    >Take a Test GAD7 | PHQ9
+                                    </Link>
+                                </li>
+                                <li className="list-group-item">
+                                    <Link 
+                                        to='/meet'
+                                    >Request a Meeting with a counselor
+                                    </Link>
+                                </li>
+                                <li className="list-group-item">
+                                    <Link 
+                                        to='/guidedmeditation'
+                                    >Go to Guided Meditation
+                                    </Link>
+                                </li>
+                                <li className="list-group-item">
+                                    <Link 
+                                        to='/dailymoodsurvey'
+                                    >Take your daily mood survey
+                                    </Link>
+                                </li>
+                            </ul>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div style={{ marginTop: "20px" }}></div>

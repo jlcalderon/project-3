@@ -19,11 +19,15 @@ module.exports = function(sequelize, DataTypes) {
         /* This field is intented to record the resolution of this session */
         note: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         status: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        meetinglink: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     });
     return therapySession;
