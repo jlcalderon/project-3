@@ -8,6 +8,7 @@ function Dashboard() {
     const [user, setUser] = useState({});
     const [studentsData, setStudentsData] = useState([]);
     const [meetingsData, setMeetingsData] = useState([]);
+    const [meetingLink, setMeetingLink] = useState();
 
     useEffect(() => {
         //Grabbing the user object from a high level
@@ -34,10 +35,7 @@ function Dashboard() {
         axios
             .get(
                 "/api/therapysession/couselor/" +
-                    parseInt(JSON.parse(localStorage.getItem("user")).id, 10),
-                {
-                    dateofSession: Date.now(),
-                }
+                    parseInt(JSON.parse(localStorage.getItem("user")).id, 10)
             )
             .then((results) => {
                 setMeetingsData(results.data);
@@ -49,13 +47,39 @@ function Dashboard() {
 
     console.log(studentsData);
 
+    function updateMeeting(meetingId) {
+        //axios request to post to update the selected meeting
+        console.log(meetingId);
+        console.log(meetingLink);
+        axios
+            .post("/api/therapysession/" + meetingId, {
+                note: "",
+                status: "accepted",
+                meetinglink: meetingLink,
+                updatedAt: Date.now(),
+            })
+            .then((response) => {
+                alert(`Meeting id: ${meetingId} was updated successfuly!`);
+                setMeetingLink("");
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+        //Clear state of meetlink
+        
+    }
+
     return (
         <div className='container' style={{ marginTop: "20px" }}>
             {user.admin === true ? (
                 <div className='container'>
                     <div className='row'>
                         <div className='col'>
-                            <h3>Welcome {user.userName}</h3>
+                            <h3>
+                                Welcome {user.userName}, today is{" "}
+                                {moment(Date.now()).format("MM/DD/YYYY")}
+                            </h3>
                         </div>
                     </div>
                     <div className='row'>
@@ -76,26 +100,56 @@ function Dashboard() {
                                                 {item.userName} | Scores:{" "}
                                                 {item.scores}
                                             </p>
-                                            <button>Do Something</button>
                                         </li>
                                     );
                                 })}
                             </ul>
                         </div>
                         <div className='col'>
-                            <p>
-                                Meetings requested today{" "}
-                                {moment(Date.now()).format("MM/DD/YYYY")}
-                            </p>
+                            <p>Requested meetings</p>
                             <ul className='list-group-item'>
                                 {meetingsData.map((item) => {
                                     return (
                                         <li
                                             className='list-group-item'
                                             id={item.id}>
-                                            Subject: {item.subject} Reqeusted by
-                                            student ID: {item.studentId}{" "}
-                                            <button>Send Link</button>
+                                            Subject: {item.subject} {" | "}
+                                            Requested by student ID:{" "}
+                                            {item.studentId}
+                                            {" | "} {item.status}
+                                            <input
+                                                type='text'
+                                                id='link'
+                                                data-id={item.id}
+                                                className='form-control'
+                                                placeholder='Enter the meeting link here'
+                                                onChange={(event) => {
+                                                    console.log(
+                                                        event.target.value
+                                                    );
+                                                    setMeetingLink(
+                                                        event.target.value
+                                                    );
+                                                }}
+                                            />
+                                            <button
+                                                type='button'
+                                                id={item.id}
+                                                className='btn btn-light'
+                                                style={{
+                                                    backgroundColor: "#1AB394",
+                                                    color: "white",
+                                                }}
+                                                onClick={(event) => {
+                                                    updateMeeting(
+                                                        parseInt(
+                                                            event.target.id,
+                                                            10
+                                                        )
+                                                    );
+                                                }}>
+                                                Accept
+                                            </button>
                                         </li>
                                     );
                                 })}

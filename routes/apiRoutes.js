@@ -304,9 +304,8 @@ module.exports = function(app) {
         db.therapySession
             .findAll({
                 where: {
-                    couselorId: req.params.id,
-                    dateofSession: req.body.dateofSession,
-                },
+                    counselorId: req.params.id
+                }
             })
             .then((dbTherapySession) => {
                 res.json(dbTherapySession);
@@ -353,17 +352,14 @@ module.exports = function(app) {
     app.post("/api/therapysession/:id", (req, res) => {
         db.therapySession
             .update({
-                subject: req.body.subject,
-                studentId: req.body.studentId,
-                counselorId: req.body.counselorId,
-                dateofSession: req.body.dateofSession,
                 note: req.body.note,
                 status: req.body.status,
-                updatedAt: Date.now(),
+                meetinglink: req.body.meetinglink,
+                updatedAt: Date.now()
             }, {
                 where: {
                     id: req.params.id,
-                },
+                }
             })
             .then((dbTherapySession) => {
                 res.json(dbTherapySession);
