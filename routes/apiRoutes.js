@@ -3,11 +3,11 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function(app) {
-
     /***************  SCHOOL API ROUTES ******************/
     //CREATE, Add new school to the database
     app.post("/api/school", (req, res) => {
-        db.school.create({
+        db.school
+            .create({
                 name: req.body.name,
                 city: req.body.city,
                 state: req.body.state,
@@ -23,7 +23,9 @@ module.exports = function(app) {
     });
     //READ Get all schools GET
     app.get("/api/school", (req, res) => {
-        db.school.findAll({}).then(function(dbGetSchools) {
+        db.school
+            .findAll({})
+            .then(function(dbGetSchools) {
                 res.json(dbGetSchools);
             })
             .catch(function(err) {
@@ -32,23 +34,26 @@ module.exports = function(app) {
     });
     //READ Get a school by Id
     app.get("/api/school/:id", (req, res) => {
-        db.school.findOne({
+        db.school
+            .findOne({
                 where: {
-                    id: req.params.id
-                }
-            }).then(function(dbGetSchool) {
+                    id: req.params.id,
+                },
+            })
+            .then(function(dbGetSchool) {
                 res.json(dbGetSchool);
             })
             .catch(function(err) {
                 res.status(500).json(err);
             });
     });
-    //DELETE a school by querying a id 
+    //DELETE a school by querying a id
     app.delete("/api/school/:id", (req, res) => {
-        db.school.destroy({
+        db.school
+            .destroy({
                 where: {
-                    id: req.params.id
-                }
+                    id: req.params.id,
+                },
             })
             .then(function(dbDeleteSchool) {
                 res.json(dbDeleteSchool);
@@ -60,7 +65,8 @@ module.exports = function(app) {
 
     //UPDATE a school info identified by id
     app.post("/api/school/:id", (req, res) => {
-        db.school.update({
+        db.school
+            .update({
                 name: req.body.name,
                 city: req.body.city,
                 state: req.body.state,
@@ -69,9 +75,10 @@ module.exports = function(app) {
                 updatedAt: Date.now(),
             }, {
                 where: {
-                    id: req.params.id
-                }
-            }).then(function(dbUpdateSchool) {
+                    id: req.params.id,
+                },
+            })
+            .then(function(dbUpdateSchool) {
                 res.json(dbUpdateSchool);
             })
             .catch(function(err) {
@@ -80,9 +87,13 @@ module.exports = function(app) {
     });
 
     /***************  DAILY STATS API ROUTES ***************/
-    //READ Get all daily stats 
+    //READ Get all daily stats
     app.get("/api/dailystat", (req, res) => {
-        db.dailystat.findAll({}).then(function(dbDailyStats) { res.json(dbDailyStats) })
+        db.dailystat
+            .findAll({})
+            .then(function(dbDailyStats) {
+                res.json(dbDailyStats);
+            })
             .catch(function(err) {
                 res.status(500).json(err);
             });
@@ -90,7 +101,8 @@ module.exports = function(app) {
 
     //CREATE record a new dailyStat
     app.post("/api/dailystat", (req, res) => {
-        db.dailystat.create({
+        db.dailystat
+            .create({
                 dateofSurvey: req.body.dateofSurvey,
                 mood: req.body.mood,
                 studentId: req.body.studentId,
@@ -103,12 +115,13 @@ module.exports = function(app) {
             });
     });
 
-    //DELETE a dailyStat by id 
+    //DELETE a dailyStat by id
     app.delete("/api/dailystat/:id", (req, res) => {
-        db.dailystat.destroy({
+        db.dailystat
+            .destroy({
                 where: {
-                    id: req.params.id
-                }
+                    id: req.params.id,
+                },
             })
             .then(function(dbDeletedDailyStat) {
                 res.json(dbDeletedDailyStat);
@@ -120,10 +133,11 @@ module.exports = function(app) {
 
     //READ, Get all stats of a specific student id
     app.get("/api/dailystat/student/:id", (req, res) => {
-        db.dailystat.findAll({
+        db.dailystat
+            .findAll({
                 where: {
-                    studentId: req.params.id
-                }
+                    studentId: req.params.id,
+                },
             })
             .then(function(dbGetDailyStats) {
                 res.json(dbGetDailyStats);
@@ -135,15 +149,16 @@ module.exports = function(app) {
 
     //UPDATE a specific studentId stat where date is = date from req.body
     app.post("/api/dailystat/:id", (req, res) => {
-        db.dailystat.update({
+        db.dailystat
+            .update({
                 dateofSurvey: req.body.dateofSurvey,
                 mood: req.body.mood,
-                updatedAt: Date.now()
+                updatedAt: Date.now(),
             }, {
                 where: {
                     studentId: req.params.id,
-                    dateofSurvey: req.body.dateofSurvey
-                }
+                    dateofSurvey: req.body.dateofSurvey,
+                },
             })
             .then(function(dbDailyStat) {
                 res.json(dbDailyStat);
@@ -156,7 +171,9 @@ module.exports = function(app) {
     /***************  testGAD7 API ROUTES ***************/
     //Get all testGAD7 READ ALL
     app.get("/api/testgad7", (req, res) => {
-        db.testGAD7.findAll({}).then(function(dbGetTestGAD7) {
+        db.testGAD7
+            .findAll({})
+            .then(function(dbGetTestGAD7) {
                 res.json(dbGetTestGAD7);
             })
             .catch(function(err) {
@@ -166,10 +183,11 @@ module.exports = function(app) {
 
     //Get all testGAD7 by student id READ student
     app.get("/api/testgad7/:id", (req, res) => {
-        db.testGAD7.findAll({
+        db.testGAD7
+            .findAll({
                 where: {
-                    studentId: req.params.id
-                }
+                    studentId: req.params.id,
+                },
             })
             .then(function(dbTestGAD7) {
                 res.json(dbTestGAD7);
@@ -181,7 +199,8 @@ module.exports = function(app) {
 
     //CREATE a new testgad7
     app.post("/api/testgad7", (req, res) => {
-        db.testGAD7.create({
+        db.testGAD7
+            .create({
                 feeling: req.body.feeling,
                 control: req.body.control,
                 worrying: req.body.worrying,
@@ -203,7 +222,8 @@ module.exports = function(app) {
     /***************  TEST PHQ9 API ROUTES ***************/
     //READ all test
     app.get("/api/testphq9", (req, res) => {
-        db.testPHQ9.findAll({})
+        db.testPHQ9
+            .findAll({})
             .then((dbTestPHQ9) => {
                 res.json(dbTestPHQ9);
             })
@@ -214,11 +234,13 @@ module.exports = function(app) {
 
     //READ only tests related to a studentId
     app.get("/api/testphq9/:id", (req, res) => {
-        db.testphq9.findAll({
+        db.testphq9
+            .findAll({
                 where: {
-                    studentId: req.params.id
-                }
-            }).then((dbTestPHQ9) => {
+                    studentId: req.params.id,
+                },
+            })
+            .then((dbTestPHQ9) => {
                 res.json(dbTestPHQ9);
             })
             .catch(function(err) {
@@ -228,7 +250,8 @@ module.exports = function(app) {
 
     //CREATE a new test PHQ9
     app.post("/api/testphq9", (req, res) => {
-        db.testPHQ9.create({
+        db.testPHQ9
+            .create({
                 little: req.body.little,
                 down: req.body.down,
                 falling: req.body.falling,
@@ -252,7 +275,8 @@ module.exports = function(app) {
     /***************  THERAPY SESSIONS API ROUTES ***************/
     // READ ALL
     app.get("/api/therapysession", (req, res) => {
-        db.therapySession.findAll({})
+        db.therapySession
+            .findAll({})
             .then((dbTherapySessions) => {
                 res.json(dbTherapySessions);
             })
@@ -260,28 +284,31 @@ module.exports = function(app) {
                 res.status(500).json(err);
             });
     });
-    // READ ONE by stdent id and date
+    // READ ALL by student id
     app.get("/api/therapysession/student/:id", (req, res) => {
-        db.therapySession.findAll({
+        db.therapySession
+            .findAll({
                 where: {
                     studentId: req.params.id,
-                    dateofSession: req.body.dateofSession
                 }
-            }).then((dbTherapySession) => {
+            })
+            .then((dbTherapySession) => {
                 res.json(dbTherapySession);
             })
             .catch(function(err) {
                 res.status(500).json(err);
             });
     });
-    // READ ONE by counselor id and date
+    // READ ALL by counselor id and date
     app.get("/api/therapysession/couselor/:id", (req, res) => {
-        db.therapySession.findAll({
+        db.therapySession
+            .findAll({
                 where: {
                     couselorId: req.params.id,
-                    dateofSession: req.body.dateofSession
-                }
-            }).then((dbTherapySession) => {
+                    dateofSession: req.body.dateofSession,
+                },
+            })
+            .then((dbTherapySession) => {
                 res.json(dbTherapySession);
             })
             .catch(function(err) {
@@ -290,12 +317,14 @@ module.exports = function(app) {
     });
     // READ ONE by counselor id and status = "pending"
     app.get("/api/therapysession/counselor/:id/:status", (req, res) => {
-        db.therapySession.findAll({
+        db.therapySession
+            .findAll({
                 where: {
                     studentId: req.params.id,
-                    status: req.params.status
-                }
-            }).then((dbTherapySession) => {
+                    status: req.params.status,
+                },
+            })
+            .then((dbTherapySession) => {
                 res.json(dbTherapySession);
             })
             .catch(function(err) {
@@ -304,7 +333,8 @@ module.exports = function(app) {
     });
     // CREATE a therapy session record
     app.post("/api/therapysession", (req, res) => {
-        db.therapySession.create({
+        db.therapySession
+            .create({
                 subject: req.body.subject,
                 studentId: req.body.studentId,
                 counselorId: req.body.counselorId,
@@ -321,7 +351,8 @@ module.exports = function(app) {
     });
     // UPDATE a therapy session record by therapy id
     app.post("/api/therapysession/:id", (req, res) => {
-        db.therapySession.update({
+        db.therapySession
+            .update({
                 subject: req.body.subject,
                 studentId: req.body.studentId,
                 counselorId: req.body.counselorId,
@@ -331,8 +362,8 @@ module.exports = function(app) {
                 updatedAt: Date.now(),
             }, {
                 where: {
-                    id: req.params.id
-                }
+                    id: req.params.id,
+                },
             })
             .then((dbTherapySession) => {
                 res.json(dbTherapySession);
@@ -343,11 +374,13 @@ module.exports = function(app) {
     });
     // DELETE a therapy session record by therapy id
     app.delete("/api/therapysession/:id", (req, res) => {
-        db.therapySession.destroy({
+        db.therapySession
+            .destroy({
                 where: {
-                    id: req.params.id
-                }
-            }).then((dbDeletedSession) => {
+                    id: req.params.id,
+                },
+            })
+            .then((dbDeletedSession) => {
                 res.json(dbDeletedSession);
             })
             .catch(function(err) {
@@ -438,7 +471,9 @@ module.exports = function(app) {
     /***************  USERS MODEL API ROUTES ***************/
     //READ Get all users
     app.get("/api/user", function(req, res) {
-        db.user.findAll({}).then(function(dbGetUser) {
+        db.user
+            .findAll({})
+            .then(function(dbGetUser) {
                 res.json(dbGetUser);
             })
             .catch(function(err) {
@@ -448,11 +483,13 @@ module.exports = function(app) {
 
     // READ get one user
     app.get("/api/user/:id", (req, res) => {
-        db.user.findOne({
+        db.user
+            .findOne({
                 where: {
-                    id: req.params.id
-                }
-            }).then((dbUsersById) => {
+                    id: req.params.id,
+                },
+            })
+            .then((dbUsersById) => {
                 res.json(dbUsersById);
             })
             .catch((err) => {
@@ -462,12 +499,31 @@ module.exports = function(app) {
 
     // READ all users from a specific school with students privilege
     app.get("/api/user/student/school/:id", (req, res) => {
-        db.user.findAll({
+        db.user
+            .findAll({
                 where: {
                     schoolId: req.params.id,
-                    admin: false
-                }
-            }).then((dbUsersBySchoolId) => {
+                    admin: false,
+                },
+            })
+            .then((dbUsersBySchoolId) => {
+                res.json(dbUsersBySchoolId);
+            })
+            .catch((err) => {
+                res.status(500).json(err);
+            });
+    });
+
+    // READ all users from a specific school with counselor privilege
+    app.get("/api/user/counselor/school/:id", (req, res) => {
+        db.user
+            .findAll({
+                where: {
+                    schoolId: req.params.id,
+                    admin: true,
+                },
+            })
+            .then((dbUsersBySchoolId) => {
                 res.json(dbUsersBySchoolId);
             })
             .catch((err) => {
@@ -477,46 +533,51 @@ module.exports = function(app) {
 
     // UPDATE user info by id
     app.post("/api/user/update/:id", (req, res) => {
-        db.user.update({
-            userName: req.body.userName,
-            email: req.body.email,
-            status: req.body.status,
-            schoolId: req.body.schoolId,
-            scores: req.body.scores,
-        }, {
-            where: {
-                id: req.params.id
-            }
-        }).then((dbUserUpdated) => {
-            res.json(dbUserUpdated);
-        }).catch((err) => {
-            res.status(500).json(err);
-        });
+        db.user
+            .update({
+                userName: req.body.userName,
+                email: req.body.email,
+                status: req.body.status,
+                schoolId: req.body.schoolId,
+                scores: req.body.scores,
+            }, {
+                where: {
+                    id: req.params.id,
+                },
+            })
+            .then((dbUserUpdated) => {
+                res.json(dbUserUpdated);
+            })
+            .catch((err) => {
+                res.status(500).json(err);
+            });
     });
-
-    /* Get student scores ? */
 
     /* UPDATE Scores of students */
     app.post("/api/user/update/student/:studentId/score/:score", (req, res) => {
-        db.user.update({
-            scores: req.params.score
-        }, {
-            where: {
-                id: req.params.studentId
-            }
-        }).then((dbUserStudentScoreUpdated) => {
-            res.json(dbUserStudentScoreUpdated);
-        }).catch((err) => {
-            res.status(500).json(err);
-        });
+        db.user
+            .update({
+                scores: req.params.score,
+            }, {
+                where: {
+                    id: req.params.studentId,
+                },
+            })
+            .then((dbUserStudentScoreUpdated) => {
+                res.json(dbUserStudentScoreUpdated);
+            })
+            .catch((err) => {
+                res.status(500).json(err);
+            });
     });
 
     // DELETE a user by id
     app.delete("/api/user/:id", (req, res) => {
-        db.user.destroy({
+        db.user
+            .destroy({
                 where: {
-                    id: req.params.id
-                }
+                    id: req.params.id,
+                },
             })
             .then((dbDeletedUser) => {
                 res.json(dbDeletedUser);
@@ -524,6 +585,5 @@ module.exports = function(app) {
             .catch((err) => {
                 res.status(500).json(err);
             });
-
     });
 };

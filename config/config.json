@@ -2,14 +2,14 @@
     "development": {
         "database": "mindset",
         "username": "root",
-        "password": "x",
+        "password": null,
         "host": "127.0.0.1",
         "port": 3306,
         "dialect": "mysql"
     },
     "test": {
         "username": "root",
-        "password": "x",
+        "password": null,
         "database": "test_mindset",
         "host": "localhost",
         "dialect": "mysql",

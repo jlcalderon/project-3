@@ -87,7 +87,7 @@ const users = [{
         password: "1234",
         admin: false,
         status: false,
-        schoolId: 8,
+        schoolId: 11,
         scores: 0
     }, {
         userName: "foos",
@@ -95,7 +95,7 @@ const users = [{
         password: "1234",
         admin: false,
         status: false,
-        schoolId: 1,
+        schoolId: 11,
         scores: 0
     }, {
         userName: "isabell",
@@ -103,7 +103,7 @@ const users = [{
         password: "1234",
         admin: false,
         status: false,
-        schoolId: 4,
+        schoolId: 9,
         scores: 0
     }, {
         userName: "anusha",
@@ -119,7 +119,7 @@ const users = [{
         password: "1234",
         admin: false,
         status: false,
-        schoolId: 10,
+        schoolId: 5,
         scores: 0
     }, {
         userName: "jorge",
@@ -132,13 +132,40 @@ const users = [{
     },
     {
         userName: "nate",
-        email: "nate@gmail.com",
+        email: "nate@example.com",
         password: "1234",
         admin: true,
         status: false,
         schoolId: 11,
         scores: 0
+    },
+    {
+        userName: "phelan",
+        email: "phelan@example.com",
+        password: "1234",
+        admin: true,
+        status: false,
+        schoolId: 9,
+        scores: 0
+    },
+    {
+        userName: "jhony",
+        email: "jhony@example.com",
+        password: "1234",
+        admin: true,
+        status: false,
+        schoolId: 9,
+        scores: 0
+    }, {
+        userName: "aaron",
+        email: "aaron@example.com",
+        password: "1234",
+        admin: true,
+        status: false,
+        schoolId: 5,
+        scores: 0
     }
+
 ]
 
 //Bulk insert 

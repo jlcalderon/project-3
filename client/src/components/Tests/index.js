@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import * as Survey from "survey-react"
+import * as Survey from "survey-react";
 import "survey-react/survey.css";
 
-function Tests() {
-
+function Tests(){
+    
     Survey.StylesManager.applyTheme("modern");
 
     let jsonTest = {
@@ -108,10 +108,14 @@ function Tests() {
         }]
     };
 
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+    const [json, setJson] = useState(jsonTest);
+    let history = useHistory();
+
     function onComplete(survey, options) {
+        console.log(user.id);
         //Write survey results into database
         console.log("Survey results: " + JSON.stringify(survey.data));
-
         //axios request
         axios.post("/api/testgad7", {
             feeling: survey.data.GAD7.feeling,
@@ -122,11 +126,9 @@ function Tests() {
             annoyed: survey.data.GAD7.annoyed,
             afraid: survey.data.GAD7.afraid,
             dateofGAD7: Date.now(),
-            studentId: 1
-
+            studentId: user.id
         }).then((responseGAD7) => {
             console.log(`Test GAD7: ${responseGAD7} saved`);
-            
             axios.post("/api/testphq9",{
                 little: survey.data.PHQ9.little,
                 down: survey.data.PHQ9.down,
@@ -138,29 +140,34 @@ function Tests() {
                 moving: survey.data.PHQ9.moving,
                 thoughts: survey.data.PHQ9.thoughts,
                 dateofPHQ9: Date.now(),
-                studentId: 1,
+                studentId: user.id
             }).then((responsePHQ9)=>{
                 console.log(`Test PHQ9: ${responsePHQ9} saved`);
-            }).catch((err)=>{
-                throw err;
-            });
-
+                //Update score +10
+                let newScore = user.scores+10;
+                console.log(newScore);
+                axios.post("/api/user/update/student/"+user.id+"/score/"+newScore)
+                .then((res)=>{
+                    console.log(res);   
+                    //Update the user highlevel reference object from localstorage to the updated user
+                    axios.get("/api/user/"+user.id)
+                    .then((userResult)=>{
+                        localStorage.setItem("user",JSON.stringify(userResult.data));
+                        console.log(userResult);            
+                        //Redirect
+                        history.push("/dashboard");
+                    }).catch((err)=>{
+                        console.log(err);                                        
+                    });
+                }).catch((err)=>{
+                    throw err;
+                });
         }).catch((err)=>{
             throw err;
         });
-
-        //Redirect
-        history.push("/dashboard");
-    }
-
-    const [json, setJson] = useState(jsonTest);
-    
-    let history = useHistory();
-
-
-
-    return ( 
-    <div className="container" style={{marginTop:"25px"}}>
+    });
+}
+    return ( <div className="container" style={{marginTop:"25px"}} >
         <div className="row">
             <div className="col">
             <Survey.Survey 
@@ -170,8 +177,6 @@ function Tests() {
             />
             </div>
         </div>
-    </div>    
-    );
+    </div> );
 }
-
 export default Tests;

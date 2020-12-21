@@ -17,42 +17,39 @@ function NavBar() {
     const location = useLocation();
     //Handle functions
     return (
-        <div className="full-width">
+        <div className='full-width'>
             <div className='row' style={{ backgroundColor: "white" }}>
                 <div className='col'>
                     <nav className='navbar navbar-expand-lg' style={stylesNav}>
-                    <Link
-                        to='/' 
-                        className="navbar-brand"
-                        style={navLink}>
-                        MindSet
-                    </Link>
+                        <Link to='/' className='navbar-brand' style={navLink}>
+                            MINDSET
+                        </Link>
                         <ul className='navbar-nav ml-auto'>
-                                <li className='nav-item'>
-                                    <Link
-                                        to='/'
-                                        className={
-                                            location.pathname === "/"
-                                                ? "nav-link active"
-                                                : "nav-link"
-                                        }
-                                        style={navLink}>
-                                        Home
-                                    </Link>
-                                </li>
-                                <li className='nav-item'>
-                                    <Link
-                                        to='/dashboard'
-                                        className={
-                                            location.pathname === "/dashboard"
-                                                ? "nav-link active"
-                                                : "nav-link"
-                                        }
-                                        style={navLink}>
-                                        Dashboard
-                                    </Link>
-                                </li>
-                            </ul>
+                            <li className='nav-item'>
+                                <Link
+                                    to='/'
+                                    className={
+                                        location.pathname === "/"
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                    style={navLink}>
+                                    Home
+                                </Link>
+                            </li>
+                            <li className='nav-item'>
+                                <Link
+                                    to='/dashboard'
+                                    className={
+                                        location.pathname === "/dashboard"
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                    style={navLink}>
+                                    Dashboard
+                                </Link>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
             </div>
