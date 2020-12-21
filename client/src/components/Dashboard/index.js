@@ -15,22 +15,22 @@ function Dashboard() {
         setUser(userFormatted);
 
         //This request is to retrieve the students of the counselor school
-        axios.get("/api/user/student/school/"+parseInt(JSON.parse(localStorage.getItem("user")).schoolId,10))
-        .then((results)=>{
-          setStudentsData(results.data);
-        }).catch(err => {
-          console.log(err);
-        });
+        axios.get("/api/user/student/school/" + parseInt(JSON.parse(localStorage.getItem("user")).schoolId, 10))
+            .then((results) => {
+                setStudentsData(results.data);
+            }).catch(err => {
+                console.log(err);
+            });
 
         //This axios request is retrieving meetings requested to counselor ids */
-        axios.get("/api/therapysession/couselor/"+parseInt(JSON.parse(localStorage.getItem("user")).id,10),{
+        axios.get("/api/therapysession/couselor/" + parseInt(JSON.parse(localStorage.getItem("user")).id, 10), {
             dateofSession: Date.now()
         })
-        .then((results)=>{
-           setMeetingsData(results.data); 
-        }).catch((err)=>{
-            console.log(err);
-        })
+            .then((results) => {
+                setMeetingsData(results.data);
+            }).catch((err) => {
+                console.log(err);
+            })
 
     }, []);
 
@@ -44,102 +44,102 @@ function Dashboard() {
                 <div className='container'>
                     <div className='row'>
                         <div className='col'>
-                            <h3>Wellcome {user.userName}</h3>
+                            <h3>Welcome {user.userName}</h3>
                         </div>
                     </div>
                     <div className='row'>
-                      <div className='col'>
-                          <p>See your students: </p>
-                        <ul className="list-group">
-                        {studentsData.map((item)=>{
-                          return (<li 
-                                    className="list-group-item"
-                                    id={item.id}
-                                    onClick={(event)=>{console.log(event.target.id)}}
-                                    style={{display:"inline-block"}}
-                                    >
-                                    <p>ID: {item.id} Name: {item.userName} | Scores: {item.scores}</p> 
-                                    <button>Do Something</button>
-                                  </li>);
-                        })
-                        }
-                        </ul>
-                      </div>
-                      <div className="col">
-                        <p>Meetings requested today {moment(Date.now()).format("MM/DD/YYYY")}</p>
-                        <ul className="list-group-item">
-                        {
-                            meetingsData.map((item)=>{
-                                
-                                return (
-                                    <li
+                        <div className='col'>
+                            <p>See your students: </p>
+                            <ul className="list-group">
+                                {studentsData.map((item) => {
+                                    return (<li
                                         className="list-group-item"
                                         id={item.id}
+                                        onClick={(event) => { console.log(event.target.id) }}
+                                        style={{ display: "inline-block" }}
                                     >
-                                     Subject: {item.subject}  Reqeusted by student ID: {item.studentId}  <button>Send Link</button>  
-                                    </li>
-                                )
-                                
-                            })
-                        }
-                        </ul>
-                      </div>
+                                        <p>ID: {item.id} Name: {item.userName} | Scores: {item.scores}</p>
+                                        <button>Do Something</button>
+                                    </li>);
+                                })
+                                }
+                            </ul>
+                        </div>
+                        <div className="col">
+                            <p>Meetings requested today: {moment(Date.now()).format("MM/DD/YYYY")}</p>
+                            <ul className="list-group-item">
+                                {
+                                    meetingsData.map((item) => {
+
+                                        return (
+                                            <li
+                                                className="list-group-item"
+                                                id={item.id}
+                                            >
+                                                Subject: {item.subject}  Reqeusted by student ID: {item.studentId}  <button>Send Link</button>
+                                            </li>
+                                        )
+
+                                    })
+                                }
+                            </ul>
+                        </div>
                     </div>
                 </div>
             ) : (
-                <div className='container'>
-                    <div className='row'>
-                        <div className='col'>
-                            <h3>{user.userName}'s Dashboard</h3>
+                    <div className='container'>
+                        <div className='row'>
+                            <div className='col'>
+                                <h3>{user.userName}'s Dashboard</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div className='row'>
-                        <div className='col'>
-                            <p>Here are your daily mood statistics</p>
-                            {/** Here we got to send the data and setings as props*/}
-                            <GoogleChart />
-                        </div>
-                        <div className="col">
-                            <div className="row">
-                                <div className="col">
-                                    <h3>Scores: {user.scores}</h3>
+                        <div className='row'>
+                            <div className='col'>
+                                <p>Here are your daily mood statistics </p>
+                                {/** Here we got to send the data and setings as props*/}
+                                <GoogleChart />
+                            </div>
+                            <div className="col">
+                                <div className="row">
+                                    <div className="col">
+                                        <h3>Scores: {user.scores}</h3>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <ul className="list-group">
+                                            <li className="list-group-item">
+                                                <Link
+                                                    to='/tests'
+                                                >Take a Test GAD7 | PHQ9
+                                    </Link>
+                                            </li>
+                                            <li className="list-group-item">
+                                                <Link
+                                                    to='/meet'
+                                                >Request a Meeting with a counselor
+                                    </Link>
+                                            </li>
+                                            <li className="list-group-item">
+                                                <Link
+                                                    to='/guidedmeditation'
+                                                >Go to Guided Meditation
+                                    </Link>
+                                            </li>
+                                            <li className="list-group-item">
+                                                <Link
+                                                    to='/dailymoodsurvey'
+                                                >Take your daily mood survey
+                                    </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="row">
-                            <div className="col">
-                            <ul className="list-group">
-                                <li className="list-group-item">
-                                    <Link 
-                                        to='/tests'
-                                    >Take a Test GAD7 | PHQ9
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link 
-                                        to='/meet'
-                                    >Request a Meeting with a counselor
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link 
-                                        to='/guidedmeditation'
-                                    >Go to Guided Meditation
-                                    </Link>
-                                </li>
-                                <li className="list-group-item">
-                                    <Link 
-                                        to='/dailymoodsurvey'
-                                    >Take your daily mood survey
-                                    </Link>
-                                </li>
-                            </ul>
-                            </div>
-                            </div>
                         </div>
+                        <div style={{ marginTop: "20px" }}></div>
                     </div>
-                    <div style={{ marginTop: "20px" }}></div>
-                </div>
-            )}
+                )}
         </div>
     );
 }
