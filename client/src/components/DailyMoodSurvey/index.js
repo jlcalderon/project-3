@@ -123,7 +123,7 @@ function DailyMoodSurvey() {
                 </div>
             </div>
             <p style={{ marginTop: "20px" }}>
-                On a scale of 1 the least - 5 the most your mood today is:{" "}
+                On a scale of 1-5, please rate your mood today:{" "}
                 {mood}
             </p>
             {/* Have some logic to render a question based on the mood 1-3 Do you want to talk about your feelings today?
@@ -135,8 +135,8 @@ function DailyMoodSurvey() {
                 <div className='row' style={{ marginTop: "10px" }}>
                     <div className='col'>
                         <p>
-                            We feel sorry that you are not feeling well today.
-                            Would you like to talk about your feelings with a
+                            Sorry that you are not feeling well today.
+                            Would you like to speak with a
                             counselor?
                         </p>
                         <button
@@ -160,7 +160,7 @@ function DailyMoodSurvey() {
                 <div className='row' style={{ marginTop: "10px" }}>
                     <div className='col'>
                         <p>
-                            You rock today! Please share your positive energy
+                            You rock today! Please share that positive energy
                             with your class.
                         </p>
                     </div>
@@ -186,9 +186,9 @@ function DailyMoodSurvey() {
                                 axios
                                     .post(
                                         "/api/user/update/student/" +
-                                            user.id +
-                                            "/score/" +
-                                            newScore
+                                        user.id +
+                                        "/score/" +
+                                        newScore
                                     ) //sneding values to update by params
                                     .then((res) => {
                                         console.log(res);

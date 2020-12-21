@@ -19,10 +19,10 @@ function Dashboard() {
         axios
             .get(
                 "/api/user/student/school/" +
-                    parseInt(
-                        JSON.parse(localStorage.getItem("user")).schoolId,
-                        10
-                    )
+                parseInt(
+                    JSON.parse(localStorage.getItem("user")).schoolId,
+                    10
+                )
             )
             .then((results) => {
                 setStudentsData(results.data);
@@ -35,7 +35,7 @@ function Dashboard() {
         axios
             .get(
                 "/api/therapysession/couselor/" +
-                    parseInt(JSON.parse(localStorage.getItem("user")).id, 10)
+                parseInt(JSON.parse(localStorage.getItem("user")).id, 10)
             )
             .then((results) => {
                 setMeetingsData(results.data);
@@ -67,7 +67,7 @@ function Dashboard() {
             });
 
         //Clear state of meetlink
-        
+
     }
 
     return (
@@ -77,7 +77,7 @@ function Dashboard() {
                     <div className='row'>
                         <div className='col'>
                             <h3>
-                                Welcome {user.userName}, today is{" "}
+                                Welcome {user.userName}, today is: {" "}
                                 {moment(Date.now()).format("MM/DD/YYYY")}
                             </h3>
                         </div>
@@ -158,56 +158,56 @@ function Dashboard() {
                     </div>
                 </div>
             ) : (
-                <div className='container'>
-                    <div className='row'>
-                        <div className='col'>
-                            <h3>{user.userName}'s Dashboard</h3>
-                        </div>
-                    </div>
-                    <div className='row'>
-                        <div className='col'>
-                            <p>Here are your daily mood statistics</p>
-                            {/** Here we got to send the data and setings as props*/}
-                            <GoogleChart />
-                        </div>
-                        <div className='col'>
-                            <div className='row'>
-                                <div className='col'>
-                                    <h3>My Scores: {user.scores}</h3>
-                                </div>
-                            </div>
-                            <div className='row'>
-                                <div className='col'>
-                                    <ul className='list-group'>
-                                        <li className='list-group-item'>
-                                            <Link to='/tests'>
-                                                Take a Test GAD7 | PHQ9
-                                            </Link>
-                                        </li>
-                                        <li className='list-group-item'>
-                                            <Link to='/meets'>
-                                                Request a Meeting with a
-                                                counselor
-                                            </Link>
-                                        </li>
-                                        <li className='list-group-item'>
-                                            <Link to='/guidedmeditation'>
-                                                Go to Guided Meditation
-                                            </Link>
-                                        </li>
-                                        <li className='list-group-item'>
-                                            <Link to='/dailymoodsurvey'>
-                                                Take your daily mood survey
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <div className='container'>
+                        <div className='row'>
+                            <div className='col'>
+                                <h3>{user.userName}'s Dashboard</h3>
                             </div>
                         </div>
+                        <div className='row'>
+                            <div className='col'>
+                                <p>Here are your daily mood statistics: </p>
+                                {/** Here we got to send the data and setings as props*/}
+                                <GoogleChart />
+                            </div>
+                            <div className='col'>
+                                <div className='row'>
+                                    <div className='col'>
+                                        <h3>My Scores: {user.scores}</h3>
+                                    </div>
+                                </div>
+                                <div className='row'>
+                                    <div className='col'>
+                                        <ul className='list-group'>
+                                            <li className='list-group-item'>
+                                                <Link to='/tests'>
+                                                    Take a Test GAD7 | PHQ9
+                                            </Link>
+                                            </li>
+                                            <li className='list-group-item'>
+                                                <Link to='/meets'>
+                                                    Request a Meeting with a
+                                                    counselor
+                                            </Link>
+                                            </li>
+                                            <li className='list-group-item'>
+                                                <Link to='/guidedmeditation'>
+                                                    Go to Guided Meditation
+                                            </Link>
+                                            </li>
+                                            <li className='list-group-item'>
+                                                <Link to='/dailymoodsurvey'>
+                                                    Take your daily mood survey
+                                            </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ marginTop: "20px" }}></div>
                     </div>
-                    <div style={{ marginTop: "20px" }}></div>
-                </div>
-            )}
+                )}
         </div>
     );
 }
