@@ -9,11 +9,10 @@
 * [Privilege](#Privilege)
 * [Demo](#Demo)
 * [Questions](#Questions)
-* [Go to live app]
+* [Go to live app](https://frozen-cliffs-96798.herokuapp.com)
 
 ## Overview
 This is an application designed to help teenagers with their mental health. Features include connecting with a counselor to set up a Zoom meeting, testing for anxiety and depression using the GAD-7 and PHQ-9, guided meditation links and a mood survey. This app was made using Mongo, Express, React, NodeJS, MySQL, Axios, Bootstrap, a react audio player, survey-react and custom CSS stylings.
-
 
 ## License
 This app is using the **MIT** license. For more information about the **MIT** license terms of use [*Licence*](https://opensource.org/licenses/MIT)
@@ -49,12 +48,12 @@ The student users have acceess to:
 By default we have two users set up for this project. one with admin/counselor privileges and one student user. Please see the user details below:
 
 ```
-Admin user:
+Counselor Admin user:
 { 
-    userName: "jorge",
+    userName: "nate",
     password: "1234"
 }
-Regular User:
+Student Regular User:
 
 { 
     userName: "lierin",
