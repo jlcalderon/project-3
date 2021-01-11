@@ -51,11 +51,10 @@ By default we have two users set up for this project. one with admin/counselor p
 ```
 Admin user:
 { 
-    userName: "jorge",
+    userName: "nate",
     password: "1234"
 }
 Regular User:
-
 { 
     userName: "lierin",
     password: "1234"
