@@ -85,7 +85,7 @@ function MeetSession() {
                                         parseInt(event.target.value, 10)
                                     );
                                 }}>
-                                <option value={0}> Choose a couselor </option>
+                                <option value={0}> Choose a counselor </option>
                                 {counselors.map((counselor) => {
                                     return (
                                         <option value={counselor.id}>
@@ -104,7 +104,7 @@ function MeetSession() {
                             onClick={() => {
                                 submitForm();
                             }}>
-                            Request Meeting Today
+                            Request A Meeting Today
                         </button>
                     </div>
                 </form>
@@ -116,26 +116,26 @@ function MeetSession() {
                     padding: "1%",
                     marginTop: "3%",
                 }}>
-                <p>Your requested meetings</p>    
+                <p>Your Requested Meetings</p>
                 {meetingsData.length > 0 ? (
                     <ul className='list-group'>
                         {meetingsData.map((meeting) => {
                             return (
-                                <li className='list-group-item' style={{display:"inline-block"}}>
-                                    <p style={{marginLeft:"10px"}}>Subject: {meeting.subject}</p> 
-                                    <p style={{marginLeft:"10px"}}>Status: {meeting.status}</p> 
-                                    <p style={{marginLeft:"10px"}}>Link: {meeting.meetinglink}</p>
+                                <li className='list-group-item' style={{ display: "inline-block" }}>
+                                    <p style={{ marginLeft: "10px" }}>Subject: {meeting.subject}</p>
+                                    <p style={{ marginLeft: "10px" }}>Status: {meeting.status}</p>
+                                    <p style={{ marginLeft: "10px" }}>Link: {meeting.meetinglink}</p>
                                 </li>
                             );
                         })}
                     </ul>
                 ) : (
-                    <ul className='list-group'>
-                        <li className='list-group-item'>
-                            No meetings requested for now
+                        <ul className='list-group'>
+                            <li className='list-group-item'>
+                                No Meetings Requested At This Time
                         </li>
-                    </ul>
-                )}
+                        </ul>
+                    )}
             </div>
         </div>
     );

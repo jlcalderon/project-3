@@ -50,7 +50,7 @@ if (process.env.NODE_ENV === "test") {
 
 // Starting the express server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)
-    .then(function() {
+    .then(function () {
         app.listen(PORT, () => {
             console.log(`🌎 ==> API server now on port ${PORT}!`);
         });

@@ -55,7 +55,6 @@ Admin user:
     password: "1234"
 }
 Regular User:
-
 { 
     userName: "lierin",
     password: "1234"
