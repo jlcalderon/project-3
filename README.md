@@ -53,8 +53,7 @@ Couselor user:
     userName: "nate",
     password: "1234"
 }
-
-Student User:
+Student user:
 { 
     userName: "lierin",
     password: "1234"
