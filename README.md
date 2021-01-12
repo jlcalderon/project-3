@@ -45,7 +45,7 @@ The Student users have access to:
 
 ## Users
 
-By default we have two users set up for this project. one with Couselor/Admin privileges and one with Student access. Please see the user details below:
+By default we have two users set up for this project. one with Counselor/Admin privileges and one with Student access. Please see the user details below:
 
 ```
 Couselor user:
