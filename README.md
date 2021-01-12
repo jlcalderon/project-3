@@ -14,7 +14,6 @@
 ## Overview
 This is an application designed to help high school students with their mental health. Track and monitor their daily mental health and have immediate access to coping skills such as meditations. Features also include connecting with a counselor to set up a Zoom Meeting or Google Meet, testing using the GAD-7 and PHQ-9 Psychologist approved tests for measuring anxiety and depression levels, guided meditation links and a mood survey. This app was made using React JS with hooks, Sequelize ORM with MySQL Dialect, Express, NodeJS, Axios requests, Bootstrap css library and custom CSS stylings, npm packages; react-audio-player and  survey-react.
 
-
 ## License
 This app is using the **MIT** license. For more information about the **MIT** license terms of use [*Licence*](https://opensource.org/licenses/MIT)
 
@@ -27,7 +26,7 @@ Before to start contributing take a moment to analyze the initial app database s
 [Link to open diagram online](https://dbdiagram.io/d/5fcec76d9a6c525a03ba2c8f)
 
 ## Privilege
-The app allows two types of users to interact with the login, and each type of user is able to access specific functions. The two users are the counselor/Admin and the student.
+The app allows two types of users to interact with the login, and each type of user is able to access specific functions. The two users are the Counselor/Admin and the Student.
 - Counselor/Admin
 - Student
 
@@ -48,7 +47,7 @@ The Student users have access to:
 By default we have two users set up for this project. one with Counselor/Admin privileges and one with Student access. Please see the user details below:
 
 ```
-Couselor user:
+Counselor user:
 { 
     userName: "nate",
     password: "1234"
